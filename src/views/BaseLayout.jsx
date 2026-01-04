@@ -1,33 +1,44 @@
-import { Link, Outlet } from 'react-router-dom';
+import { NavLink, Outlet, Link } from 'react-router-dom';
 
-const BaseLayout = () => {
+export default function BaseLayout() {
   return (
     <div className="layout">
-      <header className="d-flex align-items-center bg-light">
+      <header className="header">
         <h1>
-          <Link className="text-decoration-none text-dark" to="/">
+          <Link to="/" className="brand-link">
             Purrfect Adoption
           </Link>
         </h1>
-        <div className="flex-grow-1"></div>
-        <nav>
-          <ul className="nav">
-            <li className="nav-item">
-              <Link className="nav-link" to="/available-cats">
-                Available Cats
-              </Link>
-            </li>
-          </ul>
+
+        <nav className="nav">
+          <NavLink to="/about" className="nav-link">
+            About us
+          </NavLink>
+
+          <NavLink to="/available-cats" className="nav-link">
+            Available cats
+          </NavLink>
+
+          
+          <button
+            className="nav-link nav-btn"
+            type="button"
+            aria-label="Donate"
+          >
+            Donate
+          </button>
+
+          <NavLink to="/contact" className="nav-link">
+            Contact us
+          </NavLink>
         </nav>
       </header>
-      <main id="content">
+
+      <main className="main">
         <Outlet />
       </main>
-      <footer className="bg-light">
-        <p>© Copyright 2024</p>
-      </footer>
+
+      <footer className="footer">© Copyright 2024</footer>
     </div>
   );
-};
-
-export default BaseLayout;
+}
